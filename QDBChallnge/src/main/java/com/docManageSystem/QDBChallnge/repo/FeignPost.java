@@ -19,7 +19,7 @@ public interface FeignPost {
 	
 	@RequestLine("POST /posts")
 	@Headers("Content-Type: application/json")
-	@Body("%7B\"id\": \"{dId}\", \"docName\": \"{docName}\"%7D")
+	@Body("%7B\"id\": \"{id}\", \"docName\": \"{docName}\"%7D")
 	void postData(@Param("id") Long dId, @Param("docName") String docName);
 	
 	@RequestLine("GET /posts")
