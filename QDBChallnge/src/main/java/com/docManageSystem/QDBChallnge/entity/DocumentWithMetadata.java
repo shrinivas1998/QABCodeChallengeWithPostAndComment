@@ -16,6 +16,7 @@ public class DocumentWithMetadata {
     private Long dId;
 	private String userId;
 	private String userName;
+    @Column(unique=true)
     private String nameOfDocument;
     private String library;
     private String description;
