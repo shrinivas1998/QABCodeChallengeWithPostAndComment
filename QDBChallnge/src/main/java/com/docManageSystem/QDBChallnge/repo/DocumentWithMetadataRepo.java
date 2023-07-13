@@ -14,7 +14,9 @@ public interface DocumentWithMetadataRepo extends JpaRepository<DocumentWithMeta
 	Optional<DocumentWithMetadata> findByUserName(String fileName);
 	
 	@Query("select dId from DocumentWithMetadata where nameOfDocument=:dName")
-	Optional<Long> findByNameOfDocument(@Param("dName") String dName);
+	Optional<Long> findDidByNameOfDoc(@Param("dName") String dName);
+	
+	Optional<DocumentWithMetadata> findByNameOfDocument(String fileName);
 	
 	
 	@Query("select userId from DocumentWithMetadata where userName=:userName")
