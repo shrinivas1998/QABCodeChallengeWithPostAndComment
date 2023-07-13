@@ -71,6 +71,9 @@ public class FileUploadController {
 	 
 		System.out.println(file.getOriginalFilename());
 		return ResponseEntity.status(HttpStatus.CREATED).body("Entry is saved in DB");
+		} catch(DataIntegrityViolationException ex) {
+			 ex.printStackTrace();
+			 return ResponseEntity.status(HttpStatus.CONFLICT).body("Name with doc alredy exist");
 		} catch(Exception ex) {
 			ex.printStackTrace();
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("some error happned");
