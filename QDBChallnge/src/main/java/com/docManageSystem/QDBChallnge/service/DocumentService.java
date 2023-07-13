@@ -33,10 +33,10 @@ public class DocumentService {
 	
 	public boolean deleteDocument(String docName) {
 		
-		Optional<Long> docWithMeta = dwmr.findByNameOfDocument(docName);
-		System.out.println(docWithMeta.get());
-		if(docWithMeta.isPresent()) {
-			dwmr.deleteById(docWithMeta.get());
+		Optional<Long> dId = dwmr.findDidByNameOfDoc(docName);
+		System.out.println(dId.get());
+		if(dId.isPresent()) {
+			dwmr.deleteById(dId.get());
 			return true;
 		} else {
 			return false;
@@ -45,7 +45,7 @@ public class DocumentService {
 	}
 	
 	public byte[] downloadDocument(String fileName){
-        Optional<DocumentWithMetadata> docData = dwmr.findByUserName(fileName);
+        Optional<DocumentWithMetadata> docData = dwmr.findByNameOfDocument(fileName);
         return CompresserAndDecompressor.decompressPdfDoc(docData.get().getPdfFile());
     }
 	
