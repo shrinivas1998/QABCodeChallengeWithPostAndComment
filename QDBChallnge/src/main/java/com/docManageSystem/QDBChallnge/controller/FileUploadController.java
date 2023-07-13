@@ -73,8 +73,9 @@ public class FileUploadController {
 		return ResponseEntity.status(HttpStatus.CREATED).body("Entry is saved in DB");
 		} catch(Exception ex) {
 			ex.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("some error happned");
 		}
-		return null;
+		
 		
 	}
 	@GetMapping("/download/{fileName}")
