@@ -54,7 +54,7 @@ public class FileUploadController {
 		dWMD.setUserName(userName);
 		dWMD.setLibrary(library);
 		dWMD.setDescription(description);
-		documentService.uploadDocument(file,dWMD);
+		DocumentWithMetadata dWMDfromDB = documentService.uploadDocument(file,dWMD);
 		
 		FeignPost client = Feign.builder()
 	                .encoder(new GsonEncoder())
@@ -66,7 +66,7 @@ public class FileUploadController {
 //		DocumentWithMetadata data = new DocumentWithMetadata();
 	        // Set the necessary data properties
 		
-	    client.postData(dWMD.getdId(),dWMD.getNameOfDocument());
+	    client.postData(dWMDfromDB.getdId(),dWMDfromDB.getNameOfDocument());
 	    
 	 
 		System.out.println(file.getOriginalFilename());
